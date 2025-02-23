@@ -1,0 +1,23 @@
+version: 1
+project: titorelli-org
+containers:
+  console:
+    image: ghcr.io/titorelli-org/console
+    ports:
+      - 3000
+network:
+  domains:
+    titorelli-ru:
+      host: titorelli.ru
+  services:
+    console:
+      container: console
+      ports:
+        - 3000
+  routes:
+    console:
+      domain: titorelli.ru
+      service: console
+      port: 80
+      path: /
+      type: internal
