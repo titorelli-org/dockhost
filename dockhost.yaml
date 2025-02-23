@@ -18,6 +18,6 @@ network:
     console:
       domain: titorelli.ru
       service: console
-      port: 80
+      port: 3000
       path: /
       type: internal

@@ -4,7 +4,7 @@ on:
     branches:
       - main
 env:
-  DOCKHOST_TOKEN=${{secrets.DOCKHOST_TOKEN}}
+  DOCKHOST_TOKEN: ${{secrets.DOCKHOST_TOKEN}}
 jobs:
   deploy:
     name: Project deploy
@@ -15,4 +15,4 @@ jobs:
       - name: Install dockhost cli
         run: curl -fsSL https://download.dockhost.ru/cli/install.sh | sh
       - name: Push to dockhost
-        run: dockhost compose apply
+        run: dockhost compose apply -f dockhost.yaml
