@@ -16,7 +16,7 @@ network:
         - 3000
   routes:
     console:
-      domain: next.titorelli.ru
+      domain: titorelli-ru
       service: console
       port: 3000
       path: /
