@@ -3,6 +3,8 @@ project: titorelli-org
 containers:
   console:
     image: ghcr.io/titorelli-org/console
+    resources:
+      memory: 512Mib
     ports:
       - 3000
   text-storage:
