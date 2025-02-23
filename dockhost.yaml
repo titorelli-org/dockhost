@@ -5,15 +5,32 @@ containers:
     image: ghcr.io/titorelli-org/console
     ports:
       - 3000
+  text-storage:
+    image: ghcr.io/titorelli-org/text-storage
+    ports:
+      - 8080
+    volumes:
+      - name: text-storage-data
+        mountPath: /data
+volumes:
+  text-storage-data:
+    type: ssd
+    size: 4Gib
 network:
   domains:
     titorelli-ru:
       host: next.titorelli.ru
+    text-titorelli.ru:
+      host: text.next.titorelli.ru
   services:
     console:
       container: console
       ports:
         - 3000
+    text-storage:
+      container: text-storage
+      ports:
+        - 8080
   routes:
     console:
       domain: titorelli-ru
@@ -21,3 +38,8 @@ network:
       port: 3000
       path: /
       type: internal
+    text-storage:
+      domain: text-titorelli-ru
+      service: text-storage
+      ports:
+        - 8080
