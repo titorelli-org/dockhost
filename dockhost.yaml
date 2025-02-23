@@ -21,7 +21,7 @@ network:
     titorelli-ru:
       host: next.titorelli.ru
     text-titorelli.ru:
-      host: text.next.titorelli.ru
+      host: text.api.next.titorelli.ru
   services:
     console:
       container: console
@@ -41,5 +41,6 @@ network:
     text-storage:
       domain: text-titorelli-ru
       service: text-storage
-      ports:
-        - 8080
+      port: 8080
+      path: /
+      type: internal
