@@ -11,8 +11,6 @@ jobs:
       image: dockhost/cli
       env:
         DOCKHOST_TOKEN: ${{secrets.DOCKHOST_TOKEN}}
-      volumes:
-        - /:/
     steps:
       - name: Checkout
         uses: actions/checkout@v4
