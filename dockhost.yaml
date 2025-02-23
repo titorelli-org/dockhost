@@ -22,7 +22,7 @@ network:
   domains:
     titorelli-ru:
       host: next.titorelli.ru
-    text-titorelli.ru:
+    text-titorelli-ru:
       host: text.api.next.titorelli.ru
   services:
     console:
