@@ -3,16 +3,20 @@ on:
   push:
     branches:
       - main
-env:
-  DOCKHOST_TOKEN: ${{secrets.DOCKHOST_TOKEN}}
 jobs:
   deploy:
     name: Project deploy
     runs-on: ubuntu-latest
+    container:
+      image: dockhost/cli
+      env:
+        DOCKHOST_TOKEN: ${{secrets.DOCKHOST_TOKEN}}
+      volumes:
+        - /:/
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install dockhost cli
-        run: curl -fsSL https://download.dockhost.ru/cli/install.sh | sh
+      # - name: Install dockhost cli
+      #   run: curl -fsSL https://download.dockhost.ru/cli/install.sh | sh
       - name: Push to dockhost
         run: dockhost compose apply -f dockhost.yaml
