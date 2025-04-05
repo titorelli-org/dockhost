@@ -10,7 +10,7 @@ containers:
   api-service:
     image: ghcr.io/titorelli-org/api-service
     resources:
-      memory: 512Mib
+      memory: 1Gib
     ports:
       - 3000
     volumes:
