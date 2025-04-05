@@ -7,6 +7,15 @@ containers:
       memory: 512Mib
     ports:
       - 3000
+  api-service:
+    image: ghcr.io/titorelli-org/api-service
+    resources:
+      memory: 512Mib
+    ports:
+      - 3000
+    volumes:
+      - name: api-service-data
+        mountPath: /data
   text-storage:
     image: ghcr.io/titorelli-org/text-storage
     ports:
@@ -18,15 +27,24 @@ volumes:
   text-storage-data:
     type: ssd
     size: 4Gib
+  api-service-data:
+    type: ssd
+    size: 4Gib
 network:
   domains:
     titorelli-ru:
       host: next.titorelli.ru
+    api-titorelli-ru:
+      host: api.next.titorelli.ru
     text-titorelli-ru:
       host: text.api.next.titorelli.ru
   services:
     console:
       container: console
+      ports:
+        - 3000
+    api-service:
+      container: api-service
       ports:
         - 3000
     text-storage:
@@ -37,6 +55,12 @@ network:
     console:
       domain: titorelli-ru
       service: console
+      port: 3000
+      path: /
+      type: internal
+    api:
+      domain: api-titorelli-ru
+      service: api-service
       port: 3000
       path: /
       type: internal
