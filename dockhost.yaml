@@ -16,6 +16,8 @@ containers:
     volumes:
       - name: api-service-data
         mountPath: /usr/src/app/data
+    init:
+      - chown node:node -R /usr/src/app/data/*
   text-storage:
     image: ghcr.io/titorelli-org/text-storage
     ports:
