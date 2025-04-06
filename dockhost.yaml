@@ -16,8 +16,16 @@ containers:
     volumes:
       - name: api-service-data
         mountPath: /usr/src/app/data
-    init:
-      - chown node:node -R /usr/src/app/data/*
+    variables:
+      DATABASE_URL: file:./dev.db
+      PASSWORD_PEPPER: $PASSWORD_PEPPER
+      JWT_SECRET: $JWT_SECRET
+      SMTP_PASS_RESTORE_PASSWORD: $SMTP_PASS_RESTORE_PASSWORD
+      SMTP_PASS_NOREPLY: $SMTP_PASS_NOREPLY
+      SITE_ORIGIN: $SITE_ORIGIN
+      NEXT_PUBLIC_YM_COUNTER_ID: $NEXT_PUBLIC_YM_COUNTER_ID
+      TITORELLI_SERVICE_URL: $TITORELLI_SERVICE_URL
+      TITORELLI_CLIENT_SECRET: $TITORELLI_CLIENT_SECRET
   text-storage:
     image: ghcr.io/titorelli-org/text-storage
     ports:
