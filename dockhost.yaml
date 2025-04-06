@@ -15,7 +15,7 @@ containers:
       - 3000
     volumes:
       - name: api-service-data
-        mountPath: /data
+        mountPath: /usr/src/app/data
   text-storage:
     image: ghcr.io/titorelli-org/text-storage
     ports:
