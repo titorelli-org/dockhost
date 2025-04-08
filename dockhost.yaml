@@ -26,6 +26,15 @@ containers:
       NEXT_PUBLIC_YM_COUNTER_ID: $NEXT_PUBLIC_YM_COUNTER_ID
       TITORELLI_SERVICE_URL: $TITORELLI_SERVICE_URL
       TITORELLI_CLIENT_SECRET: $TITORELLI_CLIENT_SECRET
+  cas-service:
+    image: ghcr.io/titorelli-org/cas-service
+    resources:
+      memory: 1Gib
+    ports:
+      - 3000
+    volumes:
+      - name: cas-service-data
+        mountPath: /usr/src/app/data
   text-storage:
     image: ghcr.io/titorelli-org/text-storage
     ports:
@@ -40,6 +49,9 @@ volumes:
   api-service-data:
     type: ssd
     size: 4Gib
+  cas-service-data:
+    type: ssd
+    size: 4Gib
 network:
   domains:
     titorelli-ru:
@@ -48,6 +60,8 @@ network:
       host: api.next.titorelli.ru
     text-titorelli-ru:
       host: text.api.next.titorelli.ru
+    cas-titorelli-ru:
+      host: cas.api.next.titorelli.ru
   services:
     console:
       container: console
@@ -55,6 +69,10 @@ network:
         - 3000
     api-service:
       container: api-service
+      ports:
+        - 3000
+    cas-service:
+      container: cas-service
       ports:
         - 3000
     text-storage:
@@ -78,5 +96,11 @@ network:
       domain: text-titorelli-ru
       service: text-storage
       port: 8080
+      path: /
+      type: internal
+    cas:
+      domain: cas-titorelli-ru
+      service: cas-service
+      port: 3000
       path: /
       type: internal

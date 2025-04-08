@@ -27,6 +27,8 @@ jobs:
     steps:
       - name: Restart api
         run: dockhost container update-image --project titorelli-org --name api-service --image ghcr.io/titorelli-org/api-service
+      - name: Restart cas
+        run: dockhost container update-image --project titorelli-org --name cas-service --image ghcr.io/titorelli-org/cas-service
       - name: Restart console
         run: dockhost container update-image --project titorelli-org --name console --image ghcr.io/titorelli-org/console
       - name: Restart text storage
