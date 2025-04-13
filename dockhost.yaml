@@ -51,6 +51,17 @@ containers:
     volumes:
       - name: text-storage-data
         mountPath: /data
+  openobserve:
+    image: public.ecr.aws/zinclabs/openobserve:latest
+    ports:
+      - 5080
+    volumes:
+      - name: openobserve-data
+        mountPath: /data
+    variables:
+      ZO_ROOT_USER_EMAIL: $ZO_ROOT_USER_EMAIL
+      ZO_ROOT_USER_PASSWORD: $ZO_ROOT_USER_PASSWORD
+      ZO_DATA_DIR: /data
 volumes:
   text-storage-data:
     type: ssd
@@ -62,6 +73,9 @@ volumes:
     type: ssd
     size: 4Gib
   model-service-data:
+    type: ssd
+    size: 4Gib
+  openobserve-data:
     type: ssd
     size: 4Gib
 network:
@@ -76,6 +90,8 @@ network:
       host: text.api.next.titorelli.ru
     cas-titorelli-ru:
       host: cas.api.next.titorelli.ru
+    openobserve-titorelli-ru:
+      host: openobserve.next.titorelli.ru
   services:
     console:
       container: console
@@ -97,6 +113,10 @@ network:
       container: text-storage
       ports:
         - 8080
+    openobserve:
+      container: openobserve
+      ports:
+        - 5080
   routes:
     console:
       domain: titorelli-ru
@@ -126,5 +146,11 @@ network:
       domain: cas-titorelli-ru
       service: cas-service
       port: 3000
+      path: /
+      type: internal
+    openobserve:
+      domain: openobserve-titorelli-ru
+      service: openobserve
+      port: 5080
       path: /
       type: internal
