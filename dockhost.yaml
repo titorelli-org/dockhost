@@ -7,6 +7,9 @@ containers:
       memory: 512Mib
     ports:
       - 3000
+    variables:
+      OO_BASE_URL: $OO_BASE_URL
+      OO_AUTH_CRED: $OO_AUTH_CRED
   api-service:
     image: ghcr.io/titorelli-org/api-service
     resources:
