@@ -8,6 +8,15 @@ containers:
     ports:
       - 3000
     variables:
+      DATABASE_URL: file:./dev.db
+      PASSWORD_PEPPER: $PASSWORD_PEPPER
+      JWT_SECRET: $JWT_SECRET
+      SMTP_PASS_RESTORE_PASSWORD: $SMTP_PASS_RESTORE_PASSWORD
+      SMTP_PASS_NOREPLY: $SMTP_PASS_NOREPLY
+      SITE_ORIGIN: $SITE_ORIGIN
+      NEXT_PUBLIC_YM_COUNTER_ID: $NEXT_PUBLIC_YM_COUNTER_ID
+      TITORELLI_SERVICE_URL: $TITORELLI_SERVICE_URL
+      TITORELLI_CLIENT_SECRET: $TITORELLI_CLIENT_SECRET
       OO_BASE_URL: $OO_BASE_URL
       OO_AUTH_CRED: $OO_AUTH_CRED
   api-service:
@@ -20,15 +29,13 @@ containers:
       - name: api-service-data
         mountPath: /usr/src/app/data
     variables:
-      DATABASE_URL: file:./dev.db
-      PASSWORD_PEPPER: $PASSWORD_PEPPER
-      JWT_SECRET: $JWT_SECRET
-      SMTP_PASS_RESTORE_PASSWORD: $SMTP_PASS_RESTORE_PASSWORD
-      SMTP_PASS_NOREPLY: $SMTP_PASS_NOREPLY
       SITE_ORIGIN: $SITE_ORIGIN
-      NEXT_PUBLIC_YM_COUNTER_ID: $NEXT_PUBLIC_YM_COUNTER_ID
-      TITORELLI_SERVICE_URL: $TITORELLI_SERVICE_URL
-      TITORELLI_CLIENT_SECRET: $TITORELLI_CLIENT_SECRET
+      CAS_ORIGIN: $CAS_ORIGIN
+      YANDEX_FUNCTION_URL: $YANDEX_FUNCTION_URL
+      JWT_SECRET: $JWT_SECRET
+      TELEMETRY_DB_FILENAME: data/telemetry.sqlite
+      MARKUP_DB_FILENAME: data/markup.sqlite
+      DOCKHOST_TOKEN: $DOCKHOST_TOKEN
   model-service:
     image: ghcr.io/titorelli-org/model-service
     resources:
@@ -56,6 +63,8 @@ containers:
         mountPath: /data
   openobserve:
     image: public.ecr.aws/zinclabs/openobserve:latest
+    resources:
+      memory: 512Mib
     ports:
       - 5080
     volumes:
