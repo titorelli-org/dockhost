@@ -14,11 +14,13 @@ containers:
       SMTP_PASS_RESTORE_PASSWORD: $SMTP_PASS_RESTORE_PASSWORD
       SMTP_PASS_NOREPLY: $SMTP_PASS_NOREPLY
       SITE_ORIGIN: $SITE_ORIGIN
+      API_ORIGIN: $API_ORIGIN
       NEXT_PUBLIC_YM_COUNTER_ID: $NEXT_PUBLIC_YM_COUNTER_ID
       TITORELLI_SERVICE_URL: $TITORELLI_SERVICE_URL
       TITORELLI_CLIENT_SECRET: $TITORELLI_CLIENT_SECRET
       OO_BASE_URL: $OO_BASE_URL
       OO_AUTH_CRED: $OO_AUTH_CRED
+      KEYMASK_SEED: $KEYMASK_SEED
   api-service:
     image: ghcr.io/titorelli-org/api-service
     resources:
@@ -37,6 +39,7 @@ containers:
       TELEMETRY_DB_FILENAME: data/telemetry.sqlite
       MARKUP_DB_FILENAME: data/markup.sqlite
       DOCKHOST_TOKEN: $DOCKHOST_TOKEN
+      KEYMASK_SEED: $KEYMASK_SEED
   model-service:
     image: ghcr.io/titorelli-org/model-service
     resources:
