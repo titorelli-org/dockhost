@@ -31,6 +31,8 @@ jobs:
         run: dockhost container update-image --project titorelli-org --name model-service --image ghcr.io/titorelli-org/model-service
       - name: Restart cas
         run: dockhost container update-image --project titorelli-org --name cas-service --image ghcr.io/titorelli-org/cas-service
+      - name: Restart telemetry
+        run: dockhost container update-image --project titorelli-org --name telemetry-service --image ghcr.io/titorelli-org/telemetry-service
       - name: Restart console
         run: dockhost container update-image --project titorelli-org --name console --image ghcr.io/titorelli-org/console
       - name: Restart text storage

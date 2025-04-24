@@ -58,6 +58,17 @@ containers:
     volumes:
       - name: cas-service-data
         mountPath: /usr/src/app/data
+  telemetry-service:
+    image: ghcr.io/titorelli-org/telemetry-service
+    resources:
+      memory: 1Gib
+    ports:
+      - 3000
+    volumes:
+      - name: telemetry-service-data
+        moutPoint: /usr/src/app/data
+    variables:
+      MONGO_URL: $MONGO_URL
   text-storage:
     image: ghcr.io/titorelli-org/text-storage
     ports:
@@ -91,6 +102,9 @@ volumes:
   model-service-data:
     type: ssd
     size: 4Gib
+  telemetry-service-data:
+    type: hdd
+    size: 4Gib
   openobserve-data:
     type: ssd
     size: 4Gib
@@ -106,6 +120,8 @@ network:
       host: text.api.next.titorelli.ru
     cas-titorelli-ru:
       host: cas.api.next.titorelli.ru
+    telemetry-titorelli-ru:
+      host: telemetry.api.next.titorelli.ru
     openobserve-titorelli-ru:
       host: openobserve.next.titorelli.ru
   services:
@@ -123,6 +139,10 @@ network:
         - 3000
     cas-service:
       container: cas-service
+      ports:
+        - 3000
+    telemetry-service:
+      container: telemetry-service
       ports:
         - 3000
     text-storage:
@@ -161,6 +181,12 @@ network:
     cas:
       domain: cas-titorelli-ru
       service: cas-service
+      port: 3000
+      path: /
+      type: internal
+    telemetry:
+      domain: telemetry-titorelli-ru
+      service: telemetry-service
       port: 3000
       path: /
       type: internal
