@@ -9,7 +9,7 @@ containers:
       - 3000
     volumes:
       - name: console-data
-        mountPath: /urs/run/titorelli/console/data
+        mountPath: /usr/run/titorelli/console/data
     variables:
       DATABASE_URL: file:../data/dev.db
       PASSWORD_PEPPER: $PASSWORD_PEPPER
