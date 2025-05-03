@@ -7,8 +7,11 @@ containers:
       memory: 512Mib
     ports:
       - 3000
+    volumes:
+      - name: console-data
+        mountPath: /urs/run/titorelli/console/data
     variables:
-      DATABASE_URL: file:./dev.db
+      DATABASE_URL: file:../data/dev.db
       PASSWORD_PEPPER: $PASSWORD_PEPPER
       JWT_SECRET: $JWT_SECRET
       SMTP_PASS_RESTORE_PASSWORD: $SMTP_PASS_RESTORE_PASSWORD
@@ -16,12 +19,14 @@ containers:
       SITE_ORIGIN: $SITE_ORIGIN
       API_ORIGIN: $API_ORIGIN
       TEXT_ORIGIN: $TEXT_ORIGIN
-      NEXT_PUBLIC_YM_COUNTER_ID: $NEXT_PUBLIC_YM_COUNTER_ID
       TITORELLI_SERVICE_URL: $TITORELLI_SERVICE_URL
       TITORELLI_CLIENT_SECRET: $TITORELLI_CLIENT_SECRET
+      TITORELLI_DEMO_CLIENT_SECRET: $TITORELLI_DEMO_CLIENT_SECRET
       OO_BASE_URL: $OO_BASE_URL
       OO_AUTH_CRED: $OO_AUTH_CRED
       KEYMASK_SEED: $KEYMASK_SEED
+      NEXT_PUBLIC_YM_COUNTER_ID: $NEXT_PUBLIC_YM_COUNTER_ID
+      NEXT_PUBLIC_FF_TRANSPARENT_HEADER: false
   api-service:
     image: ghcr.io/titorelli-org/api-service
     resources:
@@ -95,6 +100,9 @@ containers:
       ZO_ROOT_USER_PASSWORD: $ZO_ROOT_USER_PASSWORD
       ZO_DATA_DIR: /data
 volumes:
+  console-data:
+    type: hdd
+    size: 4Gib
   text-storage-data:
     type: ssd
     size: 4Gib
