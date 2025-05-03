@@ -27,6 +27,8 @@ containers:
       KEYMASK_SEED: $KEYMASK_SEED
       NEXT_PUBLIC_YM_COUNTER_ID: $NEXT_PUBLIC_YM_COUNTER_ID
       NEXT_PUBLIC_FF_TRANSPARENT_HEADER: false
+    init:
+      - npx prisma db push
   api-service:
     image: ghcr.io/titorelli-org/api-service
     resources:
