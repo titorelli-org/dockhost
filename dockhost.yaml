@@ -38,6 +38,9 @@ containers:
     volumes:
       - name: api-service-data
         mountPath: /usr/src/app/data
+    configs:
+      - name: oauth-clients.yaml
+        mountPath: /usr/src/app/data/oauth-clients.yaml
     variables:
       SITE_ORIGIN: $SITE_ORIGIN
       CAS_ORIGIN: $CAS_ORIGIN
