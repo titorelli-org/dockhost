@@ -53,6 +53,8 @@ containers:
       MARKUP_DB_FILENAME: data/markup.sqlite
       DOCKHOST_TOKEN: $DOCKHOST_TOKEN
       KEYMASK_SEED: $KEYMASK_SEED
+      OO_AUTH_CRED: $OO_AUTH_CRED
+      OO_BASE_URL: $OO_BASE_URL
   model-service:
     image: ghcr.io/titorelli-org/model-service
     resources:
@@ -91,6 +93,9 @@ containers:
     volumes:
       - name: text-storage-data
         mountPath: /data
+    variables:
+      PSK_U: $PSK_U
+      PSK_P: $PSK_P
   openobserve:
     image: public.ecr.aws/zinclabs/openobserve:latest
     resources:
