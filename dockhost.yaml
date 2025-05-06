@@ -55,6 +55,8 @@ containers:
       KEYMASK_SEED: $KEYMASK_SEED
       OO_AUTH_CRED: $OO_AUTH_CRED
       OO_BASE_URL: $OO_BASE_URL
+      PSK_U: $PSK_U
+      PSK_P: $PSK_P
   model-service:
     image: ghcr.io/titorelli-org/model-service
     resources:
