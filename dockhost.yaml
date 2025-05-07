@@ -77,6 +77,9 @@ containers:
     volumes:
       - name: cas-service-data
         mountPath: /usr/src/app/data
+    environment:
+      OO_AUTH_CRED: $OO_AUTH_CRED
+      OO_BASE_URL: $OO_BASE_URL
   telemetry-service:
     image: ghcr.io/titorelli-org/telemetry-service
     resources:
