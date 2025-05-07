@@ -77,7 +77,8 @@ containers:
     volumes:
       - name: cas-service-data
         mountPath: /usr/src/app/data
-    environment:
+    variables:
+      MONGO_URL: $MONGO_URL
       OO_AUTH_CRED: $OO_AUTH_CRED
       OO_BASE_URL: $OO_BASE_URL
   telemetry-service:
