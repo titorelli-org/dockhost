@@ -68,6 +68,8 @@ containers:
         mountPath: /usr/src/app/data
     variables:
       TEXT_ORIGIN: $TEXT_ORIGIN
+      OO_AUTH_CRED: $OO_AUTH_CRED
+      OO_BASE_URL: $OO_BASE_URL
   cas-service:
     image: ghcr.io/titorelli-org/cas-service
     resources:
@@ -92,6 +94,8 @@ containers:
         mountPath: /usr/src/app/data
     variables:
       MONGO_URL: $MONGO_URL
+      OO_BASE_URL: $OO_BASE_URL
+      OO_AUTH_CRED: $OO_AUTH_CRED
   text-storage:
     image: ghcr.io/titorelli-org/text-storage
     ports:
