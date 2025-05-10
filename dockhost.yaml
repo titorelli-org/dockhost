@@ -109,7 +109,7 @@ containers:
   openobserve:
     image: public.ecr.aws/zinclabs/openobserve:latest
     resources:
-      memory: 512Mib
+      memory: 1Gib
     ports:
       - 5080
     volumes:
