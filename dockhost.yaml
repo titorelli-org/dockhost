@@ -43,6 +43,7 @@ containers:
         mountPath: /usr/src/app/data/oauth-clients.yaml
     variables:
       SITE_ORIGIN: $SITE_ORIGIN
+      TELEMETRY_ORIGIN: $TELEMETRY_ORIGIN
       CAS_ORIGIN: $CAS_ORIGIN
       API_ORIGIN: $API_ORIGIN
       TEXT_ORIGIN: $TEXT_ORIGIN
