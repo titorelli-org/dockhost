@@ -68,6 +68,7 @@ containers:
       - name: model-service-data
         mountPath: /usr/src/app/data
     variables:
+      MODEL_ORIGIN: $MODEL_ORIGIN
       TEXT_ORIGIN: $TEXT_ORIGIN
       OO_AUTH_CRED: $OO_AUTH_CRED
       OO_BASE_URL: $OO_BASE_URL
@@ -81,6 +82,7 @@ containers:
       - name: cas-service-data
         mountPath: /usr/src/app/data
     variables:
+      CAS_ORIGIN: $CAS_ORIGIN
       MONGO_URL: $MONGO_URL
       OO_AUTH_CRED: $OO_AUTH_CRED
       OO_BASE_URL: $OO_BASE_URL
@@ -94,6 +96,7 @@ containers:
       - name: telemetry-service-data
         mountPath: /usr/src/app/data
     variables:
+      TELEMETRY_ORIGIN: $TELEMETRY_ORIGIN
       MONGO_URL: $MONGO_URL
       OO_BASE_URL: $OO_BASE_URL
       OO_AUTH_CRED: $OO_AUTH_CRED
