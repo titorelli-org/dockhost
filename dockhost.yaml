@@ -27,6 +27,7 @@ containers:
       KEYMASK_SEED: $KEYMASK_SEED
       NEXT_PUBLIC_YM_COUNTER_ID: $NEXT_PUBLIC_YM_COUNTER_ID
       NEXT_PUBLIC_FF_TRANSPARENT_HEADER: false
+      INITIAL_ACCESS_TOKEN: $INITIAL_ACCESS_TOKEN
     init:
       - npx prisma db push
   api-service:
@@ -58,6 +59,7 @@ containers:
       OO_BASE_URL: $OO_BASE_URL
       PSK_U: $PSK_U
       PSK_P: $PSK_P
+      INITIAL_ACCESS_TOKEN: $INITIAL_ACCESS_TOKEN
   model-service:
     image: ghcr.io/titorelli-org/model-service
     resources:
@@ -72,6 +74,7 @@ containers:
       TEXT_ORIGIN: $TEXT_ORIGIN
       OO_AUTH_CRED: $OO_AUTH_CRED
       OO_BASE_URL: $OO_BASE_URL
+      INITIAL_ACCESS_TOKEN: $INITIAL_ACCESS_TOKEN
   cas-service:
     image: ghcr.io/titorelli-org/cas-service
     resources:
@@ -86,6 +89,7 @@ containers:
       MONGO_URL: $MONGO_URL
       OO_AUTH_CRED: $OO_AUTH_CRED
       OO_BASE_URL: $OO_BASE_URL
+      INITIAL_ACCESS_TOKEN: $INITIAL_ACCESS_TOKEN
   telemetry-service:
     image: ghcr.io/titorelli-org/telemetry-service
     resources:
@@ -100,6 +104,7 @@ containers:
       MONGO_URL: $MONGO_URL
       OO_BASE_URL: $OO_BASE_URL
       OO_AUTH_CRED: $OO_AUTH_CRED
+      INITIAL_ACCESS_TOKEN: $INITIAL_ACCESS_TOKEN
   text-storage:
     image: ghcr.io/titorelli-org/text-storage
     ports:
