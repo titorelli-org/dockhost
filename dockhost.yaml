@@ -75,6 +75,7 @@ containers:
       OO_AUTH_CRED: $OO_AUTH_CRED
       OO_BASE_URL: $OO_BASE_URL
       INITIAL_ACCESS_TOKEN: $INITIAL_ACCESS_TOKEN
+      JWT_SECRET: $JWT_SECRET
   cas-service:
     image: ghcr.io/titorelli-org/cas-service
     resources:
@@ -90,6 +91,7 @@ containers:
       OO_AUTH_CRED: $OO_AUTH_CRED
       OO_BASE_URL: $OO_BASE_URL
       INITIAL_ACCESS_TOKEN: $INITIAL_ACCESS_TOKEN
+      JWT_SECRET: $JWT_SECRET
   telemetry-service:
     image: ghcr.io/titorelli-org/telemetry-service
     resources:
@@ -105,6 +107,7 @@ containers:
       OO_BASE_URL: $OO_BASE_URL
       OO_AUTH_CRED: $OO_AUTH_CRED
       INITIAL_ACCESS_TOKEN: $INITIAL_ACCESS_TOKEN
+      JWT_SECRET: $JWT_SECRET
   text-storage:
     image: ghcr.io/titorelli-org/text-storage
     ports:
