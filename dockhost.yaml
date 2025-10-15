@@ -111,7 +111,7 @@ containers:
   titus-transmitter:
     image: ghcr.io/titorelli-org/titus-transmitter
     resources:
-      memory: 256Mib
+      memory: 512Mib
     ports:
       - 3000
     variables:
