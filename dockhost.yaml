@@ -108,6 +108,17 @@ containers:
       OO_AUTH_CRED: $OO_AUTH_CRED
       INITIAL_ACCESS_TOKEN: $INITIAL_ACCESS_TOKEN
       JWT_SECRET: $JWT_SECRET
+  titus-transmitter:
+    image: ghcr.io/titorelli-org/titus-transmitter
+    resources:
+      memory: 256Mib
+    ports:
+      - 3000
+    variables:
+      MONGO_URL: $MONGO_URL
+      MONGO_USER: $MONGO_MONGO_INITDB_ROOT_USERNAME
+      MONGO_PASSWORD: $MONGO_MONGO_INITDB_ROOT_PASSWORD
+      TRANSMITTER_ORIGIN: $TRANSMITTER_ORIGIN
   text-storage:
     image: ghcr.io/titorelli-org/text-storage
     ports:
@@ -165,6 +176,8 @@ network:
       host: text.api.next.titorelli.ru
     cas-titorelli-ru:
       host: cas.api.next.titorelli.ru
+    transmitter-titus-bot-ru:
+      host: transmitter.titus.api.next.titorelli.ru
     telemetry-titorelli-ru:
       host: telemetry.api.next.titorelli.ru
     openobserve-titorelli-ru:
@@ -188,6 +201,10 @@ network:
         - 3000
     telemetry-service:
       container: telemetry-service
+      ports:
+        - 3000
+    titus-transmitter:
+      container: titus-transmitter
       ports:
         - 3000
     text-storage:
@@ -226,6 +243,12 @@ network:
     cas:
       domain: cas-titorelli-ru
       service: cas-service
+      port: 3000
+      path: /
+      type: internal
+    titus-transmitter:
+      domain: transmitter-titus-bot-ru
+      service: titus-transmitter
       port: 3000
       path: /
       type: internal
